@@ -1,0 +1,14 @@
+libname homework 'D:\courses\summer courses for sas\lectures\lecture 9\data for class 9\data for class 9';
+run;
+data questionnarie;
+set homework.ques;
+array count{4} reason1-reason4;
+      do reason=1 to 4;
+	  amount = count{reason};
+	  output;
+end;
+run;
+proc freq data=questionnarie;
+table reason*amount;
+weight amount;
+run;

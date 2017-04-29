@@ -1,0 +1,16 @@
+libname homework 'D:\courses\summer courses for sas\homework10\Data for class 10\Data for class 10';
+run;
+data bodyfat;
+set homework.bodyfat2;
+sample=rannor(50);
+run;
+proc freq data=bodyfat;
+table sample;
+run;
+proc univariate data=bodyfat;
+var sample;
+run;
+data bodyfat2;
+set bodyfat;
+if sample le 0.0139855;
+run;

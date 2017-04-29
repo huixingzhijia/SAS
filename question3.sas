@@ -1,0 +1,17 @@
+libname homework 'D:\courses\summer courses for sas\lectures\lecture 9\data for class 9\data for class 9';
+run;
+data answer;
+drop i;
+set homework.answers;
+retain npass 0;
+array score{5} score1-score5;
+array dif{5};
+array passscore{5}  _temporary_(65,70,60,75,66);
+do i=1 to 5;
+   dif{i}=score{i}-passscore{i};
+   if dif{i} ge 0 then dif{i}=1;
+   else if dif{i} lt 0 then dif{i}=0;
+end;
+npass=sum(of dif1-dif5);
+label npass='number of score passed';
+run;

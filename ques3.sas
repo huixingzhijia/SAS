@@ -1,0 +1,14 @@
+libname homework 'D:\courses\summer courses for sas\homework10\Data for class 10\Data for class 10';
+run;
+data names;
+set homework.customers_ex5;
+if gender='M' then title='Mr.';
+else if gender='F' then title='Ms.';
+length Fname Lname New_name $30;
+Fname=scan(name,2,',');
+Lname=propcase(scan(name,1,','));
+New_name=catx(' ',title,Fname,Lname);
+keep New_name name gender;
+run;
+proc print data=names;
+run;

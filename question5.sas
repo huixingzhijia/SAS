@@ -1,0 +1,17 @@
+libname homework 'D:\courses\summer courses for sas\lectures\lecture 9\data for class 9\data for class 9';
+run;
+proc sort data=homework.thin;
+by id;
+run;
+data thin;
+set homework.thin;
+by id;
+retain time1-time4;
+array visit[4] time1-time4;
+if first.id then do i=1 to 4;
+  visit[i]=.;
+end;
+visit[time]=x;
+if last.id;
+drop time x i;
+run;

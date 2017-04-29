@@ -1,0 +1,14 @@
+libname homework 'D:\courses\summer courses for sas\homework10\Data for class 10\Data for class 10';
+run;
+data newcompetitors;
+set homework.newcompetitors;
+contry=substr(ID,1,2);
+store_code=compress(substr(ID,3,6));
+store_code=left(store_code);
+if substr(store_code,1,1)=1;
+city=propcase(city);
+run;
+proc print data=newcompetitors(obs=5);
+var store_code contry city postal_code;
+title New Small-Store Competitors;
+run;
